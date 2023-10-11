@@ -48,10 +48,10 @@ print(np.shape(ytest))
 
 # Training and Testing a Classifier
 def Get_Metric_Results(ytest, ypred):
-    acc = accuracy_score(ytest, ypred)*100
-    prec = precision_score(ytest, ypred, average='macro')*100
-    rec = recall_score(ytest, ypred, average='macro')*100
-    f1 = f1_score(ytest, ypred, average='macro')*100
+    acc = accuracy_score(ytest, ypred) * 100
+    prec = precision_score(ytest, ypred, average='macro') * 100
+    rec = recall_score(ytest, ypred, average='macro') * 100
+    f1 = f1_score(ytest, ypred, average='macro') * 100
     return acc, prec, rec, f1
 
 

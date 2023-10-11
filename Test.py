@@ -21,7 +21,7 @@ def Test_Get_Metric_Results(xtrain, xtest, ytrain, ytest):
     KNN.fit(xtrain, ytrain)
     ypred = KNN.predict(xtest)
     Get_Metric_Results(ytest, ypred)
-    assert accuracy_score(ytest, ypred)*100 is not None
-    assert precision_score(ytest, ypred, average='macro')*100 is not None
-    assert recall_score(ytest, ypred, average='macro')*100 is not None
-    assert f1_score(ytest, ypred, average='macro')*100 is not None
+    assert accuracy_score(ytest, ypred) * 100 is not None
+    assert precision_score(ytest, ypred, average='macro') * 100 is not None
+    assert recall_score(ytest, ypred, average='macro') * 100 is not None
+    assert f1_score(ytest, ypred, average='macro') * 100 is not None
