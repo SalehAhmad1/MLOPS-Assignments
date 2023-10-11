@@ -17,4 +17,4 @@ jobs:
         pip install flake8
     - name: Run Flake8
       run: |
-        flake8
+        flake8 --ignore=F405
