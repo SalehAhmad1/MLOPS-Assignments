@@ -2,7 +2,7 @@ name: Flake8 Linter
 
 on: 
     push:
-        branches: [ dEV ]
+        branches: [ Dev ]
 
 jobs:
   flake8:
