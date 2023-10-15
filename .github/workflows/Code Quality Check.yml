@@ -29,11 +29,24 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
-      with:
-          commit-message: Automatic PR to Test
-          title: Automatic PR to Test
-          body: Automatic PR to Test
-          base: Test
-          branch: Temp PR Branch
-          delete-branch: true
+      id: create_pr
+      run: |
+        # Replace these variables with your own values
+        base_branch=Test  # Replace with the target branch
+        head_branch=Dev  # Replace with the source branch
+        title="Feature added to Dev. Test Time now"
+
+        # Create a pull request using the GitHub API
+        response=$(curl -X POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -d '{
+            "title": "'"$title"'",
+            "body": "'"$body"'",
+            "head": "'"$head_branch"'",
+            "base": "'"$base_branch"'"
+          }' \
+          "https://api.github.com/repos/${{ github.repository }}/pulls")
+
+        echo "Pull request created with response: $response"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
