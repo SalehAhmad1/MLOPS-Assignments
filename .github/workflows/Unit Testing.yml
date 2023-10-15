@@ -1,7 +1,7 @@
 name: Unit Testing
 
 on:
-    push:
+    pull_request:
         branches:
             - Test
 
@@ -21,3 +21,5 @@ jobs:
           run: pip install -r Requirements.txt
         - name: Run Unit Tests
           run: python3 Test.py
+        - name: Output Test Results
+          run: echo "Test Passed!!"
