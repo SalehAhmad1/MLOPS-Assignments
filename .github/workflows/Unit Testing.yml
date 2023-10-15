@@ -3,7 +3,7 @@ name: Flake8 on Code.py
 on:
   push:
     branches: 
-      - Dev
+      - Test
 
 jobs:
   flake8:
