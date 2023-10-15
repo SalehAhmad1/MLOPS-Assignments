@@ -1,9 +1,10 @@
 # Importing All Required Libraries
 import numpy as np
 import pandas as pd
+import pickle
 
 import sklearn
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.neighbors import KNeighborsClassifier
@@ -11,7 +12,7 @@ from sklearn.neighbors import KNeighborsClassifier
 # Loading the dataset into a dataframe
 #Importing the dataset from sklearn
 def Get_Data():
-    dataset = load_breast_cancer()
+    dataset = load_iris()
     X,Y = dataset.data, dataset.target
     X = pd.DataFrame(X, columns=dataset.feature_names)
     Y = pd.DataFrame(Y, columns=['target'])
@@ -26,7 +27,7 @@ DF.target.value_counts()
 
 def Get_Splits(X,Y):
     # Splitting the Dataset
-    xtrain, xtest, ytrain, ytest = train_test_split(X,Y, test_size=0.2, random_state=0)
+    xtrain, xtest, ytrain, ytest = train_test_split(X,Y, test_size=0.2, random_state=49)
     ytrain = ytrain.values.ravel()
     ytest = ytest.values.ravel()
     return xtrain, xtest, ytrain, ytest
@@ -52,3 +53,5 @@ print("Accuracy: ", acc)
 print("Precision: ", prec)
 print("Recall: ", rec)
 print("F1 Score: ", f1)
+filename = 'Sklearn_Model.pkl'
+pickle.dump(KNN, open(filename, 'wb'))
