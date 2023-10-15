@@ -2,8 +2,7 @@ name: Code Quality Check (flake8)
 
 on: 
   push:
-    branches: 
-      - Master
+    branches:
       - Dev
 
 jobs:
