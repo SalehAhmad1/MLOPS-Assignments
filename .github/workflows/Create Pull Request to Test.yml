@@ -2,7 +2,9 @@ name: Auto Create Pull Request from Dev to Test
 
 on:
   workflow_run:
-    workflows: ["Code Quality Check.yml"]
+    workflows: ["Code Quality Check (flake8)"]
+    branches: 
+        - Dev
     types:
       - completed
 
