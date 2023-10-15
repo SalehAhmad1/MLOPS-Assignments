@@ -1,6 +1,10 @@
-name: Code Quality Check
+name: Code Quality Check (flake8)
 
-on: [push]
+on: 
+  push:
+    branches: 
+      - Master
+      - Dev
 
 jobs:
   flake8:
