@@ -1,4 +1,4 @@
-name: Code Quality Check (flake8)
+name: Code Quality CHeck and Pull Request To Test
 
 on: 
   push:
@@ -21,3 +21,26 @@ jobs:
     - name: Run Flake8
       run: |
         flake8 --ignore=F405,F403,F401
+
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config user.email "salehahmad2106@gmail.com"
+        git config user.name "SalehAhmad1"
+        git remote add target-repo https://github.com/SalehAhmad1/MLOPS-Assignments.git
+        git fetch target-repo
+        git checkout -b pr-branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create Pull Request
+      run: |
+        gh pr create --base Test --head Dev --title "Auto-generated PR from Dev to Test" --body "This pull request was automatically created by a GitHub Actions workflow."
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
