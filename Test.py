@@ -1,4 +1,4 @@
-`from Code import *
+from Code import *
 
 
 def Test_Get_Data():

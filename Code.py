@@ -46,9 +46,6 @@ xtrain, xtest, ytrain, ytest = Get_Splits(DF.drop('target', axis=1),
                                           DF['target'])
 print(np.shape(xtrain))
 print(np.shape(xtest))
-print(np.shape(ytrain))
-print(np.shape(ytest))
-
 
 # Training and Testing a Classifier
 def Get_Metric_Results(ytest, ypred):
